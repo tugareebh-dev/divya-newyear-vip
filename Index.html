@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Divya Extreme Mega VIP New Year 2026 🎇</title>
+<title>Divya Ultimate Secret Cinematic VIP New Year 2026 🎇</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
@@ -22,6 +22,7 @@ canvas{position:absolute;top:0;left:0;z-index:0;width:100%;height:100%;}
 .popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,50,0.95);color:#fff;padding:25px 40px;border-radius:20px;box-shadow:0 0 30px #ffd700;font-size:1.2rem;display:none;z-index:10;text-align:center;}
 .closePopup{margin-top:15px;padding:5px 15px;background:#00f5ff;border:none;border-radius:10px;cursor:pointer;color:#000;font-weight:bold;}
 .floatingDivya{text-transform:uppercase;font-weight:bold;font-size:2.5rem;color:gold;position:absolute;animation:floatDivya 8s linear infinite;pointer-events:none;}
+.secret-btn{position:absolute;width:40px;height:40px;border-radius:50%;background:rgba(255,215,0,0.8);cursor:pointer;z-index:11;}
 @keyframes floatDivya{0%{top:100%;left:10%;transform:rotate(0deg);}25%{top:30%;left:50%;transform:rotate(15deg);}50%{top:50%;left:70%;transform:rotate(-15deg);}75%{top:20%;left:30%;transform:rotate(10deg);}100%{top:100%;left:10%;transform:rotate(0deg);}}
 .gallery-images{display:flex;gap:15px;overflow-x:auto;padding:15px;scroll-behavior:smooth;}
 .gallery-images img{border-radius:15px;box-shadow:0 0 20px #ffd700;min-width:200px;max-height:150px;cursor:pointer;}
@@ -31,7 +32,6 @@ canvas{position:absolute;top:0;left:0;z-index:0;width:100%;height:100%;}
 
 <canvas id="c"></canvas>
 
-<!-- Section 1: Countdown -->
 <section id="home">
 <h1>Happy New Year 2026 👑</h1>
 <h2>My Queen ❤️ Divya 💍</h2>
@@ -56,7 +56,6 @@ Har pal, har saal — sirf tum, Divya 👑
 </p>
 </section>
 
-<!-- Section 2: Gallery -->
 <section id="gallery">
 <h2>Our Memories 📸</h2>
 <div class="gallery-images">
@@ -68,7 +67,6 @@ Har pal, har saal — sirf tum, Divya 👑
 </div>
 </section>
 
-<!-- Popup Message -->
 <div class="popup" id="popupMsg">
 <p>Divya, you are my forever inspiration 💖🌟</p>
 <button class="closePopup" onclick="closePopup()">Close</button>
@@ -79,13 +77,12 @@ Har pal, har saal — sirf tum, Divya 👑
 </audio>
 
 <script>
-// Canvas & particles
-const canvas=document.getElementById("c");
-const ctx=canvas.getContext("2d");
+// Canvas
+const canvas=document.getElementById("c"), ctx=canvas.getContext("2d");
 canvas.width=innerWidth; canvas.height=innerHeight;
 let particles=[], fireworks=true, brutal=false;
 
-// Floating golden Divya texts
+// Floating Divya texts
 function createFloatingDivya(){
 const div=document.createElement('div');
 div.className='floatingDivya';
@@ -95,28 +92,22 @@ div.style.top=Math.random()*80+'%';
 document.body.appendChild(div);
 setTimeout(()=>{div.remove();},8000);
 }
-setInterval(createFloatingDivya,2000);
+setInterval(createFloatingDivya,1200);
 
-// Particle & firework functions
+// Particle
 function createParticle(x,y,type){
 const angle=Math.random()*Math.PI*2;
-const speed=Math.random()*5 + (type==='blast'?5:1);
+const speed=Math.random()*5+(type==='blast'?5:1);
 particles.push({x,y,dx:Math.cos(angle)*speed,dy:Math.sin(angle)*speed,life:150,color:type==='heart'?`hsl(330,100%,70%)`:`hsl(50,100%,90%)`,radius:type==='heart'?4:2});
 }
-function createFirework(){
-if(!fireworks) return;
-const x=Math.random()*canvas.width;
-const y=Math.random()*canvas.height/2;
-for(let i=0;i<20;i++){createParticle(x,y,'star');}
-}
+
+// Fireworks
+function createFirework(){if(!fireworks) return;const x=Math.random()*canvas.width;const y=Math.random()*canvas.height/2;for(let i=0;i<20;i++){createParticle(x,y,'star');}}
+
+// Animate
 function animate(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
-particles.forEach((p,i)=>{
-p.x+=p.dx; p.y+=p.dy; p.life--;
-ctx.fillStyle=p.color;
-ctx.beginPath(); ctx.arc(p.x,p.y,p.radius||3,0,Math.PI*2); ctx.fill();
-if(p.life<=0) particles.splice(i,1);
-});
+particles.forEach((p,i)=>{p.x+=p.dx;p.y+=p.dy;p.life--;ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,p.radius||3,0,Math.PI*2);ctx.fill();if(p.life<=0) particles.splice(i,1);});
 requestAnimationFrame(animate);
 }
 animate();
@@ -124,51 +115,66 @@ animate();
 // Countdown
 const target=new Date("January 1, 2026 00:00:00").getTime();
 const timer=setInterval(()=>{
-const now=new Date().getTime();
-const gap=target-now;
+const now=new Date().getTime(); const gap=target-now;
 if(gap<=0){
 clearInterval(timer);
 document.getElementById("countdown").style.display="none";
 document.getElementById("homeText").innerHTML="💖 HAPPY NEW YEAR 2026 DIVYA 💖";
 brutal=true;
 setInterval(()=>{document.body.style.background=`radial-gradient(circle, hsl(${Math.random()*360},50%,40%), #0b0033)`},100);
-setInterval(()=>{for(let i=0;i<4;i++)createParticle(Math.random()*canvas.width,Math.random()*canvas.height,'heart');},100);
-setInterval(()=>{for(let i=0;i<2;i++)createParticle(Math.random()*canvas.width,Math.random()*canvas.height,'star');},150);
+setInterval(()=>{for(let i=0;i<6;i++)createParticle(Math.random()*canvas.width,Math.random()*canvas.height,'heart');},100);
+setInterval(()=>{for(let i=0;i<4;i++)createParticle(Math.random()*canvas.width,Math.random()*canvas.height,'star');},150);
 setInterval(createFirework,800);
-const msg="Divya, you are my forever inspiration 💖🌟";
-let idx=0;
+const msg="Divya, you are my forever inspiration 💖🌟";let idx=0;
 function typeWriter(){if(idx<msg.length){document.getElementById("typing").innerHTML+=msg.charAt(idx);idx++;setTimeout(typeWriter,120);}}
-typeWriter();
-return;
+typeWriter(); return;
 }
 document.getElementById("d").innerText=Math.floor(gap/(1000*60*60*24));
 document.getElementById("h").innerText=Math.floor((gap%(1000*60*60*24))/(1000*60*60));
 document.getElementById("m").innerText=Math.floor((gap%(1000*60*60))/(1000*60));
 document.getElementById("s").innerText=Math.floor((gap%(1000*60))/1000);
 },1000);
-setInterval(()=>{if(!brutal)createParticle(Math.random()*canvas.width,Math.random()*canvas.height/2,'heart');},900);
+setInterval(()=>{if(!brutal)createParticle(Math.random()*canvas.width,Math.random()*canvas.height/2,'heart');},700);
 
 // Buttons
 document.getElementById("readMsgBtn").addEventListener("click",()=>{document.getElementById("popupMsg").style.display="block";});
 function closePopup(){document.getElementById("popupMsg").style.display="none";}
 document.getElementById("musicBtn").addEventListener("click",()=>{
-const bg=document.getElementById("bg");
-if(bg.paused){bg.play();document.getElementById("musicBtn").innerText="Pause Music 🎵";}
+const bg=document.getElementById("bg"); if(bg.paused){bg.play();document.getElementById("musicBtn").innerText="Pause Music 🎵";}
 else{bg.pause();document.getElementById("musicBtn").innerText="Play Music 🎵";}
 });
 document.getElementById("fireBtn").addEventListener("click",()=>{fireworks=!fireworks;});
 document.getElementById("sparkBtn").addEventListener("click",()=>{for(let i=0;i<50;i++)createParticle(Math.random()*canvas.width,Math.random()*canvas.height,'star');});
 
-// Mini-game: clickable hearts in gallery
+// Mini-game gallery + chain reaction
 document.querySelectorAll('.gallery-images img').forEach(img=>{
 img.addEventListener('click',()=>{
-createParticle(Math.random()*canvas.width,Math.random()*canvas.height,'heart');
+for(let j=0;j<20;j++) createParticle(Math.random()*canvas.width,Math.random()*canvas.height,'heart');
+for(let k=0;k<20;k++) createParticle(Math.random()*canvas.width,Math.random()*canvas.height,'star');
 const popup=document.getElementById('popupMsg');
-popup.querySelector('p').innerText="💖 Divya, this is a hidden love note! 💖";
+const notes=["💖 You are my sunshine! 💖","💖 Forever yours Divya 💖","💖 Happy moments together 💖","💖 You make my world bright 💖","💖 My Queen, my love! 💖"];
+popup.querySelector('p').innerText=notes[Math.floor(Math.random()*notes.length)];
 popup.style.display='block';
 });
 });
-</script>
 
+// Secret hidden buttons
+for(let i=0;i<3;i++){
+const btn=document.createElement('div');
+btn.className='secret-btn';
+btn.style.top=Math.random()*80+'%';
+btn.style.left=Math.random()*90+'%';
+document.body.appendChild(btn);
+btn.addEventListener('click',()=>{
+for(let j=0;j<30;j++) createParticle(Math.random()*canvas.width,Math.random()*canvas.height,'heart');
+for(let k=0;k<30;k++) createParticle(Math.random()*canvas.width,Math.random()*canvas.height,'star');
+const popup=document.getElementById('popupMsg');
+const notes=["💖 Surprise! I love you Divya 💖","💖 You are my Queen! 💖","💖 Forever ours 💖"];
+popup.querySelector('p').innerText=notes[Math.floor(Math.random()*notes.length)];
+popup.style.display='block';
+btn.remove(); // disappear after click
+});
+}
+</script>
 </body>
 </html>
