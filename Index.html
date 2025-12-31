@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Divya Extreme Mega VIP New Year 2026 🎇</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+body{height:100vh;overflow-x:hidden;background:radial-gradient(circle,#0b0033,#1a004d);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;color:#fff;transition:background 0.3s;scroll-behavior:smooth;}
+section{width:100%;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;padding:30px;}
+h1{font-family:'Great Vibes',cursive;color:#ffd700;font-size:4rem;text-shadow:0 0 40px gold,0 0 80px #ffda77;}
+h2{color:#00f5ff;margin-top:10px;text-shadow:0 0 25px #00f5ff;font-size:2.5rem;}
+#typing{color:#ffb6c1;font-size:1.8rem;margin-top:15px;text-shadow:0 0 20px #ffb6c1;font-weight:bold;line-height:1.4;}
+p{margin-top:20px;line-height:1.8;color:#cce7ff;font-size:1.2rem;max-width:90%;}
+button{margin:10px;padding:10px 20px;font-size:1rem;border:none;border-radius:12px;background:linear-gradient(45deg,#00f5ff,#ffd700);color:#000;font-weight:bold;cursor:pointer;box-shadow:0 0 15px #00f5ff;}
+button:hover{box-shadow:0 0 25px #ffd700;transform:scale(1.05);transition:0.3s;}
+canvas{position:absolute;top:0;left:0;z-index:0;width:100%;height:100%;}
+#countdown{display:flex;gap:15px;justify-content:center;margin-top:25px;z-index:2;flex-wrap:wrap;}
+#countdown div{background:rgba(255,255,255,0.08);padding:15px 18px;border-radius:18px;box-shadow:0 0 25px #00bfff;}
+#countdown span{font-size:2rem;color:#00f5ff;font-weight:bold;display:block;}
+.popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,50,0.95);color:#fff;padding:25px 40px;border-radius:20px;box-shadow:0 0 30px #ffd700;font-size:1.2rem;display:none;z-index:10;text-align:center;}
+.closePopup{margin-top:15px;padding:5px 15px;background:#00f5ff;border:none;border-radius:10px;cursor:pointer;color:#000;font-weight:bold;}
+.floatingDivya{text-transform:uppercase;font-weight:bold;font-size:2.5rem;color:gold;position:absolute;animation:floatDivya 8s linear infinite;pointer-events:none;}
+@keyframes floatDivya{0%{top:100%;left:10%;transform:rotate(0deg);}25%{top:30%;left:50%;transform:rotate(15deg);}50%{top:50%;left:70%;transform:rotate(-15deg);}75%{top:20%;left:30%;transform:rotate(10deg);}100%{top:100%;left:10%;transform:rotate(0deg);}}
+.gallery-images{display:flex;gap:15px;overflow-x:auto;padding:15px;scroll-behavior:smooth;}
+.gallery-images img{border-radius:15px;box-shadow:0 0 20px #ffd700;min-width:200px;max-height:150px;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<canvas id="c"></canvas>
+
+<!-- Section 1: Countdown -->
+<section id="home">
+<h1>Happy New Year 2026 👑</h1>
+<h2>My Queen ❤️ Divya 💍</h2>
+<div id="typing"></div>
+
+<div id="countdown">
+<div><span id="d">00</span>Days</div>
+<div><span id="h">00</span>Hours</div>
+<div><span id="m">00</span>Min</div>
+<div><span id="s">00</span>Sec</div>
+</div>
+
+<button id="readMsgBtn">Read My Message 💌</button>
+<button id="musicBtn">Pause Music 🎵</button>
+<button id="fireBtn">Toggle Fireworks 🎇</button>
+<button id="sparkBtn">Surprise Sparkle ✨</button>
+
+<p id="homeText">
+Divya 💖, meri zindagi ki sabse khoobsurat aur royal hissa tum ho.<br>
+2026 hum dono ke liye aur bhi zyada pyaar aur khushiyan laaye.<br>
+Har pal, har saal — sirf tum, Divya 👑
+</p>
+</section>
+
+<!-- Section 2: Gallery -->
+<section id="gallery">
+<h2>Our Memories 📸</h2>
+<div class="gallery-images">
+<img src="https://via.placeholder.com/200x150.png?text=Memory+1">
+<img src="https://via.placeholder.com/200x150.png?text=Memory+2">
+<img src="https://via.placeholder.com/200x150.png?text=Memory+3">
+<img src="https://via.placeholder.com/200x150.png?text=Memory+4">
+<img src="https://via.placeholder.com/200x150.png?text=Memory+5">
+</div>
+</section>
+
+<!-- Popup Message -->
+<div class="popup" id="popupMsg">
+<p>Divya, you are my forever inspiration 💖🌟</p>
+<button class="closePopup" onclick="closePopup()">Close</button>
+</div>
+
+<audio id="bg" autoplay loop>
+<source src="https://assets.mixkit.co/music/preview/mixkit-love-story-926.mp3">
+</audio>
+
+<script>
+// Canvas & particles
+const canvas=document.getElementById("c");
+const ctx=canvas.getContext("2d");
+canvas.width=innerWidth; canvas.height=innerHeight;
+let particles=[], fireworks=true, brutal=false;
+
+// Floating golden Divya texts
+function createFloatingDivya(){
+const div=document.createElement('div');
+div.className='floatingDivya';
+div.innerText='Divya';
+div.style.left=Math.random()*90+'%';
+div.style.top=Math.random()*80+'%';
+document.body.appendChild(div);
+setTimeout(()=>{div.remove();},8000);
+}
+setInterval(createFloatingDivya,2000);
+
+// Particle & firework functions
+function createParticle(x,y,type){
+const angle=Math.random()*Math.PI*2;
+const speed=Math.random()*5 + (type==='blast'?5:1);
+particles.push({x,y,dx:Math.cos(angle)*speed,dy:Math.sin(angle)*speed,life:150,color:type==='heart'?`hsl(330,100%,70%)`:`hsl(50,100%,90%)`,radius:type==='heart'?4:2});
+}
+function createFirework(){
+if(!fireworks) return;
+const x=Math.random()*canvas.width;
+const y=Math.random()*canvas.height/2;
+for(let i=0;i<20;i++){createParticle(x,y,'star');}
+}
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particles.forEach((p,i)=>{
+p.x+=p.dx; p.y+=p.dy; p.life--;
+ctx.fillStyle=p.color;
+ctx.beginPath(); ctx.arc(p.x,p.y,p.radius||3,0,Math.PI*2); ctx.fill();
+if(p.life<=0) particles.splice(i,1);
+});
+requestAnimationFrame(animate);
+}
+animate();
+
+// Countdown
+const target=new Date("January 1, 2026 00:00:00").getTime();
+const timer=setInterval(()=>{
+const now=new Date().getTime();
+const gap=target-now;
+if(gap<=0){
+clearInterval(timer);
+document.getElementById("countdown").style.display="none";
+document.getElementById("homeText").innerHTML="💖 HAPPY NEW YEAR 2026 DIVYA 💖";
+brutal=true;
+setInterval(()=>{document.body.style.background=`radial-gradient(circle, hsl(${Math.random()*360},50%,40%), #0b0033)`},100);
+setInterval(()=>{for(let i=0;i<4;i++)createParticle(Math.random()*canvas.width,Math.random()*canvas.height,'heart');},100);
+setInterval(()=>{for(let i=0;i<2;i++)createParticle(Math.random()*canvas.width,Math.random()*canvas.height,'star');},150);
+setInterval(createFirework,800);
+const msg="Divya, you are my forever inspiration 💖🌟";
+let idx=0;
+function typeWriter(){if(idx<msg.length){document.getElementById("typing").innerHTML+=msg.charAt(idx);idx++;setTimeout(typeWriter,120);}}
+typeWriter();
+return;
+}
+document.getElementById("d").innerText=Math.floor(gap/(1000*60*60*24));
+document.getElementById("h").innerText=Math.floor((gap%(1000*60*60*24))/(1000*60*60));
+document.getElementById("m").innerText=Math.floor((gap%(1000*60*60))/(1000*60));
+document.getElementById("s").innerText=Math.floor((gap%(1000*60))/1000);
+},1000);
+setInterval(()=>{if(!brutal)createParticle(Math.random()*canvas.width,Math.random()*canvas.height/2,'heart');},900);
+
+// Buttons
+document.getElementById("readMsgBtn").addEventListener("click",()=>{document.getElementById("popupMsg").style.display="block";});
+function closePopup(){document.getElementById("popupMsg").style.display="none";}
+document.getElementById("musicBtn").addEventListener("click",()=>{
+const bg=document.getElementById("bg");
+if(bg.paused){bg.play();document.getElementById("musicBtn").innerText="Pause Music 🎵";}
+else{bg.pause();document.getElementById("musicBtn").innerText="Play Music 🎵";}
+});
+document.getElementById("fireBtn").addEventListener("click",()=>{fireworks=!fireworks;});
+document.getElementById("sparkBtn").addEventListener("click",()=>{for(let i=0;i<50;i++)createParticle(Math.random()*canvas.width,Math.random()*canvas.height,'star');});
+
+// Mini-game: clickable hearts in gallery
+document.querySelectorAll('.gallery-images img').forEach(img=>{
+img.addEventListener('click',()=>{
+createParticle(Math.random()*canvas.width,Math.random()*canvas.height,'heart');
+const popup=document.getElementById('popupMsg');
+popup.querySelector('p').innerText="💖 Divya, this is a hidden love note! 💖";
+popup.style.display='block';
+});
+});
+</script>
+
+</body>
+</html>
